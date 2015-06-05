@@ -1,8 +1,7 @@
 package info
 
 import (
-    "fmt" 
-    "os"
+    "fmt"
     "runtime"
     "encoding/json"
     
@@ -18,14 +17,12 @@ func (info RuntimeInfo) ToJSON() string {
     return string(bytes)
 }
 
-func init() {
+func ToJSON() string {
     if runtime.GOOS == "windows" {
         fmt.Println("Error. RuntimeInfo not working with non-unix OS")
-        os.Exit(1)
+        return ""
     }
-}
 
-func ToJSON() string {
     meminfoData  := meminfo.Data()  
     ifconfigData := ifconfig.Data()
     lscpuData    := lscpu.Data()
